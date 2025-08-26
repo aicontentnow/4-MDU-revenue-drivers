@@ -121,21 +121,21 @@
 
         .header h1 {
             font-size: 52px;
-            font-weight: 300;
+            font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
-            color: #fff;
+            color: #fff !important;
             text-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
         }
 
         .header .subtitle {
             font-size: 20px;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 400;
             line-height: 1.5;
         }
 
-        /* Navigation */
+        /* Navigation - Desktop */
         nav {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
@@ -183,6 +183,14 @@
             letter-spacing: 1px;
         }
 
+        nav a .mobile-number {
+            display: none;
+        }
+
+        nav a .desktop-text {
+            display: inline;
+        }
+
         nav a:hover {
             background: rgba(0, 255, 255, 0.1);
             border-color: #00ffff;
@@ -219,7 +227,7 @@
             font-size: 36px;
             font-weight: 300;
             margin-bottom: 30px;
-            color: #fff;
+            color: #fff !important;
             display: flex;
             align-items: center;
             gap: 20px;
@@ -252,7 +260,7 @@
 
         .description {
             font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.8) !important;
             margin-bottom: 30px;
             line-height: 1.7;
         }
@@ -265,7 +273,7 @@
         }
 
         .benefits-box h3 {
-            color: #00ffff;
+            color: #00ffff !important;
             margin-bottom: 15px;
             font-size: 14px;
             text-transform: uppercase;
@@ -281,7 +289,7 @@
             padding: 10px 0;
             padding-left: 30px;
             position: relative;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.9) !important;
         }
 
         .benefits-box li:before {
@@ -363,7 +371,7 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Split View */
+        /* Split View for Products */
         .split-view {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -371,37 +379,36 @@
         }
 
         .node-visual {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 25px;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .node-visual:hover {
-            transform: translateY(-5px);
-            border-color: #00ffff;
-            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.2);
-        }
-
-        .node-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
         }
 
         .node-title {
-            color: #00ffff;
-            font-weight: bold;
-            margin-bottom: 8px;
+            color: #00ffff !important;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 14px;
         }
 
-        .node-description {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
+        .node-image-container {
+            padding: 20px;
+            background-color: white !important;
+            background: white !important;
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+        }
+
+        .node-image {
+            width: 140px;
+            height: auto;
+            max-height: 140px;
+            object-fit: contain;
         }
 
         /* Before/After Comparison */
@@ -521,16 +528,19 @@
         /* Quote Box */
         .quote-box {
             background: rgba(168, 85, 247, 0.08);
-            border: 2px solid rgba(168, 85, 247, 0.3);
+            border: none;
+            border-left: 3px solid #ec4899;
+            border-right: 3px solid #ec4899;
             border-radius: 20px;
             padding: 35px;
             text-align: center;
             margin: 35px 0;
             font-size: 24px;
             font-style: italic;
-            color: #00ffff;
+            color: #00ffff !important;
             position: relative;
             box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+            font-weight: 500;
         }
 
         .quote-box:before {
@@ -543,49 +553,6 @@
             color: #ec4899;
         }
 
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            margin-top: 60px;
-            animation: fadeInUp 1s ease-out 0.9s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #ec4899;
-            color: #fff;
-            padding: 18px 50px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            margin: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            border: none;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
-            background: #d63384;
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: #00ffff;
-            border: 2px solid #00ffff;
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-        }
-
-        .cta-button.secondary:hover {
-            background: rgba(0, 255, 255, 0.1);
-            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
@@ -596,12 +563,42 @@
                 grid-template-columns: 1fr;
             }
             
+            /* Mobile Navigation - Grid of numbered buttons */
             nav ul {
-                flex-direction: column;
-                align-items: center;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
             }
             
-            .split-view,
+            nav a {
+                padding: 15px 5px;
+                font-size: 14px;
+                letter-spacing: 0;
+                border-radius: 8px;
+                text-align: center;
+            }
+            
+            nav a .mobile-number {
+                display: block;
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 3px;
+            }
+            
+            nav a .desktop-text {
+                display: none;
+            }
+            
+            .split-view {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .node-image {
+                width: 120px !important;
+                max-height: 120px !important;
+            }
+            
             .before-after,
             .timeline {
                 grid-template-columns: 1fr;
@@ -634,10 +631,30 @@
 
         <nav>
             <ul>
-                <li><a href="#use-what-you-have">Use What You Have</a></li>
-                <li><a href="#deploy-at-the-edge">Deploy at the Edge</a></li>
-                <li><a href="#minimize-disruption">Minimize Disruption</a></li>
-                <li><a href="#accelerate-roi">Accelerate ROI</a></li>
+                <li>
+                    <a href="#use-what-you-have">
+                        <span class="mobile-number">1</span>
+                        <span class="desktop-text">Use What You Have</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#deploy-at-the-edge">
+                        <span class="mobile-number">2</span>
+                        <span class="desktop-text">Deploy at the Edge</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#minimize-disruption">
+                        <span class="mobile-number">3</span>
+                        <span class="desktop-text">Minimize Disruption</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#accelerate-roi">
+                        <span class="mobile-number">4</span>
+                        <span class="desktop-text">Accelerate ROI</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
@@ -696,14 +713,16 @@
                 <div class="visual-content">
                     <div class="split-view">
                         <div class="node-visual">
-                            <div class="node-icon">🏢</div>
-                            <div class="node-title">Oyster Node</div>
-                            <div class="node-description">Strand-mounted in high-rise</div>
+                            <div class="node-title">SeaStar Optical Node</div>
+                            <div class="node-image-container">
+                                <img src="https://i.imgur.com/X6GIVYv.jpeg" alt="SeaStar Node" class="node-image">
+                            </div>
                         </div>
                         <div class="node-visual">
-                            <div class="node-icon">🏘️</div>
-                            <div class="node-title">SeaStar Node</div>
-                            <div class="node-description">Wall-mounted on garden MDU</div>
+                            <div class="node-title">Oyster Low-Power Node</div>
+                            <div class="node-image-container">
+                                <img src="https://i.imgur.com/pTzIloH.jpeg" alt="Oyster Node" class="node-image">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -778,11 +797,6 @@
                 </div>
             </div>
         </section>
-
-        <div class="cta-section">
-            <a href="#" class="cta-button">Get Started Today</a>
-            <a href="#" class="cta-button secondary">Learn More</a>
-        </div>
     </div>
 </body>
 </html>
