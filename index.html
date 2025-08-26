@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Ways to Turn Brownfield MDUs into Revenue Drivers | Harmonic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Purple Gradient Background with cyan/pink accents */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 60%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #000 0%, #0a0015 50%, #1a0033 100%);
+            z-index: -3;
+        }
+
+        /* Purple light beams with cyan/pink highlights */
+        .light-beams {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(105deg, transparent 40%, rgba(0, 255, 255, 0.08) 45%, rgba(147, 51, 234, 0.1) 50%, transparent 60%),
+                linear-gradient(75deg, transparent 35%, rgba(236, 72, 153, 0.06) 40%, rgba(168, 85, 247, 0.08) 45%, transparent 55%);
+            z-index: -2;
+            animation: beamMove 15s ease-in-out infinite;
+        }
+
+        @keyframes beamMove {
+            0%, 100% { opacity: 0.5; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(20px); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle:nth-child(1) {
+            width: 3px; height: 3px;
+            top: 20%; left: 10%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .particle:nth-child(2) {
+            width: 5px; height: 5px;
+            top: 60%; left: 85%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.8) 0%, transparent 70%);
+            animation: float 25s infinite ease-in-out reverse;
+        }
+
+        .particle:nth-child(3) {
+            width: 4px; height: 4px;
+            top: 80%; left: 50%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, transparent 70%);
+            animation: float 18s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            25% { transform: translateY(-30px) translateX(20px); opacity: 0.8; }
+            50% { transform: translateY(20px) translateX(-20px); opacity: 0.3; }
+            75% { transform: translateY(-20px) translateX(-30px); opacity: 0.8; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 52px;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+        }
+
+        .header .subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: block;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: #00ffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        /* Section Cards */
+        section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 25px;
+            padding: 45px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            scroll-margin-top: 120px;
+            animation: fadeInUp 1s ease-out;
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.1);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section-number {
+            background: #ec4899;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+        }
+
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .text-content {
+            padding-right: 20px;
+        }
+
+        .description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .benefits-box {
+            background: rgba(168, 85, 247, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .benefits-box h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .benefits-box ul {
+            list-style: none;
+        }
+
+        .benefits-box li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .benefits-box li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00ffff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Visual Content Area */
+        .visual-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        /* Chart Styles */
+        .chart-container {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .bar-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 200px;
+            position: relative;
+        }
+
+        .bar {
+            width: 60px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            animation: growBar 1.5s ease-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .bar:first-child {
+            height: 85%;
+            background: linear-gradient(180deg, #ec4899 0%, #a855f7 100%);
+        }
+
+        .bar:last-child {
+            height: 35%;
+            background: linear-gradient(180deg, #00ffff 0%, #00bcd4 100%);
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
+        .bar-value {
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            font-size: 12px;
+            text-align: center;
+            width: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Split View */
+        .split-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .node-visual {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .node-visual:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.2);
+        }
+
+        .node-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .node-title {
+            color: #00ffff;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .node-description {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Before/After Comparison */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .comparison-box {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-box.before {
+            border: 1px solid rgba(236, 72, 153, 0.5);
+        }
+
+        .comparison-box.after {
+            border: 1px solid rgba(0, 255, 255, 0.5);
+        }
+
+        .comparison-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .before .comparison-label {
+            background: rgba(236, 72, 153, 0.3);
+            color: #ec4899;
+        }
+
+        .after .comparison-label {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+        }
+
+        .comparison-icon {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+
+        .comparison-text {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .before .comparison-text {
+            color: #ec4899;
+        }
+
+        .after .comparison-text {
+            color: #00ffff;
+        }
+
+        .comparison-desc {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Timeline */
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .timeline-item {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:first-child {
+            border: 1px solid rgba(236, 72, 153, 0.5);
+        }
+
+        .timeline-item.fast {
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .timeline-duration {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item:first-child .timeline-duration {
+            color: #ec4899;
+        }
+
+        .timeline-item.fast .timeline-duration {
+            color: #00ffff;
+        }
+
+        .timeline-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: rgba(168, 85, 247, 0.08);
+            border: 2px solid rgba(168, 85, 247, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            margin: 35px 0;
+            font-size: 24px;
+            font-style: italic;
+            color: #00ffff;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+        }
+
+        .quote-box:before {
+            content: """;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 60px;
+            opacity: 0.3;
+            color: #ec4899;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ec4899;
+            color: #fff;
+            padding: 18px 50px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
+            background: #d63384;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 38px;
+            }
+            
+            .section-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .split-view,
+            .before-after,
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div class="background"></div>
+    <div class="light-beams"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <!-- Harmonic Logo would go here -->
+            </div>
+            <h1>4 Ways to Turn Brownfield MDUs into Revenue Drivers</h1>
+            <div class="subtitle">
+                Transform existing infrastructure into competitive advantage
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#use-what-you-have">Use What You Have</a></li>
+                <li><a href="#deploy-at-the-edge">Deploy at the Edge</a></li>
+                <li><a href="#minimize-disruption">Minimize Disruption</a></li>
+                <li><a href="#accelerate-roi">Accelerate ROI</a></li>
+            </ul>
+        </nav>
+
+        <section id="use-what-you-have">
+            <h2><span class="section-number">1</span> Use What You Have: Activate Existing Coax or Fiber Infrastructure</h2>
+            <div class="section-content">
+                <div class="text-content">
+                    <p class="description">
+                        Many brownfield MDUs already contain coax drops or risers with sufficient capacity for multi-gigabit service. By reusing that wiring and deploying platforms like DOCSIS 3.1 or XGS-PON, operators can skip expensive rewiring and deliver fast, reliable broadband—often without entering the unit.
+                    </p>
+                    <div class="benefits-box">
+                        <h3>Key Benefits</h3>
+                        <ul>
+                            <li>Avoids drilling and construction costs</li>
+                            <li>Minimizes in-unit labor and scheduling</li>
+                            <li>Enables rapid turn-up of high-speed service</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="visual-content">
+                    <div class="chart-container">
+                        <div class="bar-chart">
+                            <div class="bar">
+                                <span class="bar-value">$$$</span>
+                                <span class="bar-label">New Fiber Build</span>
+                            </div>
+                            <div class="bar">
+                                <span class="bar-value">$</span>
+                                <span class="bar-label">Reuse Coax</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="quote-box">
+                Legacy coax isn't a compromise. It's a competitive advantage.
+            </div>
+        </section>
+
+        <section id="deploy-at-the-edge">
+            <h2><span class="section-number">2</span> Deploy at the Edge: Mount Nodes Outside, Accelerate Inside</h2>
+            <div class="section-content">
+                <div class="text-content">
+                    <p class="description">
+                        Oyster and SeaStar nodes can be installed directly on strands, poles, cabinets, or exterior walls. These compact, low-power devices bring bandwidth to the building's edge without touching core pathways or structured wiring closets—allowing operators to bypass construction delays.
+                    </p>
+                    <div class="benefits-box">
+                        <h3>Key Benefits</h3>
+                        <ul>
+                            <li>Eliminates need for interior structured cabling rooms</li>
+                            <li>Speeds activation timelines</li>
+                            <li>Reduces construction and permitting risks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="visual-content">
+                    <div class="split-view">
+                        <div class="node-visual">
+                            <div class="node-icon">🏢</div>
+                            <div class="node-title">Oyster Node</div>
+                            <div class="node-description">Strand-mounted in high-rise</div>
+                        </div>
+                        <div class="node-visual">
+                            <div class="node-icon">🏘️</div>
+                            <div class="node-title">SeaStar Node</div>
+                            <div class="node-description">Wall-mounted on garden MDU</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="minimize-disruption">
+            <h2><span class="section-number">3</span> Minimize Disruption: Stay Outside and Keep Everyone Happy</h2>
+            <div class="section-content">
+                <div class="text-content">
+                    <p class="description">
+                        Brownfield activation doesn't have to mean tenant frustration. By staying outside the building envelope and using existing pathways, operators reduce disruption for residents and avoid intrusive work—preserving aesthetics, building relationships, and reducing project complexity.
+                    </p>
+                    <div class="benefits-box">
+                        <h3>Key Benefits</h3>
+                        <ul>
+                            <li>Keeps construction outside the building</li>
+                            <li>Maintains building appearance and tenant satisfaction</li>
+                            <li>Simplifies field operations and property manager coordination</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="visual-content">
+                    <div class="before-after">
+                        <div class="comparison-box before">
+                            <span class="comparison-label">Before</span>
+                            <div class="comparison-icon">🏗️</div>
+                            <p class="comparison-text">Visible rooftop installation</p>
+                            <p class="comparison-desc">Disruptive, unsightly equipment</p>
+                        </div>
+                        <div class="comparison-box after">
+                            <span class="comparison-label">After</span>
+                            <div class="comparison-icon">✨</div>
+                            <p class="comparison-text">Clean exterior-mounted node</p>
+                            <p class="comparison-desc">Minimal visual impact</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="quote-box">
+                No damage. No delays. No complaints.
+            </div>
+        </section>
+
+        <section id="accelerate-roi">
+            <h2><span class="section-number">4</span> Accelerate ROI: Turn Up Service, Not Overhead</h2>
+            <div class="section-content">
+                <div class="text-content">
+                    <p class="description">
+                        When infrastructure is already in place, operators can compress deployment timelines, reduce costs, and begin billing faster. These efficiencies translate directly to accelerated revenue and stronger margins—even in dense, high-demand urban environments.
+                    </p>
+                    <div class="benefits-box">
+                        <h3>Key Benefits</h3>
+                        <ul>
+                            <li>Reduces truck rolls, labor, and permitting overhead</li>
+                            <li>Speeds activation and first billable service</li>
+                            <li>Enables scalable growth across brownfield MDU footprints</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="visual-content">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-duration">60-90</div>
+                            <div class="timeline-label">Days for Standard Fiber Build</div>
+                        </div>
+                        <div class="timeline-item fast">
+                            <div class="timeline-duration">< 7</div>
+                            <div class="timeline-label">Days for Brownfield Coax Reuse</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <a href="#" class="cta-button">Get Started Today</a>
+            <a href="#" class="cta-button secondary">Learn More</a>
+        </div>
+    </div>
+</body>
+</html>
